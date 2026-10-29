@@ -1,5 +1,8 @@
 # Copyright 2026 NuoBiT Solutions SL - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+from odoo.tests import new_test_user
+
 from odoo.addons.base.tests.common import BaseCommon
 
 
@@ -100,13 +103,20 @@ class TestDocumentPage(BaseCommon):
         self.assertEqual(page_copy.draft_summary, "summary")
 
     def test_category_view_children(self):
-        action = self.category1.action_view_children()
+        reader = new_test_user(
+            self.env,
+            login="reader_test",
+            groups="document_knowledge.group_document_user",
+            context={"no_reset_password": True},
+        )
+        expected_context = (
+            self.env.ref("document_page.action_browse_all_content").sudo().context
+        )
+        action = self.category1.with_user(reader).action_view_children()
         self.assertEqual(action["xml_id"], "document_page.action_browse_all_content")
         self.assertEqual(action["display_name"], self.category1.name)
-        self.assertEqual(
-            action["context"],
-            {
-                "default_type": "content",
-                "search_default_parent_id": [self.category1.id],
-            },
-        )
+        self.assertEqual(action["context"], expected_context)
+
+    def test_category_view_children_no_record(self):
+        with self.assertRaises(ValueError):
+            self.page_obj.action_view_children()
