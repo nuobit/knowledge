@@ -17,3 +17,6 @@
   - Bhavesh Heliconia
 - [Ledo Enterprises](https://github.com/ledoent):
   - Don Kendall \<<dkendall@ledoweb.com>\>
+- [NuoBiT Solutions SL](https://www.nuobit.com):
+  - Deniz Gallo \<<dgallo@nuobit.com>\>
+  - Eric Antones \<<eantones@nuobit.com>\>

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 NuoBiT Solutions SL - Deniz Gallo <dgallo@nuobit.com>
+     Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <!-- Category Views -->
     <record id="view_category_form" model="ir.ui.view">
@@ -151,7 +154,7 @@
                                 t-if="record.type.raw_value == 'content'"
                                 class="d-flex justify-content-between align-items-center"
                             >
-                                <field name="write_date" widget="date" />
+                                <field name="write_date" />
                                 <field
                                     name="content_uid"
                                     widget="image"
@@ -168,8 +171,8 @@
                         >
                             <a
                                 class="o_document_page_kanban_box"
-                                name="%(action_browse_all_content)d"
-                                type="action"
+                                name="action_view_children"
+                                type="object"
                             />
                         </div>
                     </t>
