@@ -17,3 +17,4 @@
   - Bhavesh Heliconia
 - [NuoBiT Solutions SL](https://www.nuobit.com):
   - Deniz Gallo \<<dgallo@nuobit.com>\>
+  - Eric Antones \<<eantones@nuobit.com>\>
